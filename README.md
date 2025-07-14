@@ -1,6 +1,6 @@
 # Gestión de Bebidas (Cerveza y Vino)
 
-Este proyecto de consola en C# permite cargar bebidas (Cerveza y Vino), almacenarlas en archivos JSON y en una base de datos SQL Server, y mostrar información relevante como un resumen de carga y filtrado por tipo o si son alcohólicas.
+Este proyecto de consola en C# permite cargar bebidas (Cerveza y Vino), almacenarlas en archivos JSON y en una base de datos SQL Server, y mostrar información relevante como un resumen de carga y filtrado por tipo.
 
 ## Funcionalidades principales
 
