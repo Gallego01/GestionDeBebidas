@@ -20,6 +20,9 @@ namespace Act_Bebidas.Services
             bebidasContext = new BebidasContext();
         }
 
+        // Metodo que inserta una bebida en la base de datos SQL Server
+        // Primero inserta en la tabla general "Bebidas" y obtiene el ID generado
+        // Luego, segun el tipo de bebida (cerveza o vino), inserta en la tabla especifica correspondiente
         public void AgregarBebidaASQL(Bebidas bebida)
         {
             try
@@ -60,6 +63,11 @@ namespace Act_Bebidas.Services
             }
         }
 
+        // Metodo que permite cargar bebidas desde consola
+        // Solicita al usuario ingresar datos de una bebida (cantidad, nombre y tipo)
+        // Valida duplicados en archivos JSON (cerveza.txt, vino.txt)
+        // Guarda los datos en JSON y los inserta en SQL si no están duplicados
+        // Muestra un resumen final con totales procesados, insertados, omitidos y errores
         public void CargarBebida()
         {
             int totalProcesadas = 0;
@@ -134,7 +142,7 @@ namespace Act_Bebidas.Services
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"❌ Error al cargar la bebida: {ex.Message}");
+                    Console.WriteLine($"Error al cargar la bebida: {ex.Message}");
                     totalErrores++;
                 }
 
@@ -152,7 +160,10 @@ namespace Act_Bebidas.Services
             Console.WriteLine($"- Errores: {totalErrores}");
         }
 
-
+        // Metodo que guarda una bebida en un archivo JSON segun su tipo (Cerveza o Vino)
+        // Si el archivo ya existe, lo lee y agrega la nueva bebida a la lista
+        // Luego sobrescribe el archivo con la lista actualizada, de forma identada
+        // Muestra un mensaje de confirmacion o error segun el resultado
         public void GuardarBebidasComoJson(Bebidas nuevaBebida, string tipo, string nombreArchivo)
         {
             try
@@ -182,6 +193,9 @@ namespace Act_Bebidas.Services
             }
         }
 
+        // Metodo que lee un archivo JSON y muestra por consola la lista de bebidas almacenadas
+        // El comportamiento varía segun el tipo de bebida (cerveza o vino)
+        // Muestra los datos principales de cada bebida o un mensaje de error si algo falla
         public void LeerYMostrarBebidasDesdeJson(string nombreArchivo, string tipo)
         {
             try
@@ -213,6 +227,9 @@ namespace Act_Bebidas.Services
             }
         }
 
+        // Metodo que verifica si existe una bebida duplicada en el archivo JSON
+        // Compara por nombre y marca, ignorando mayusculas y minusculas
+        // Retorna true si encuentra coincidencias, false si no existen duplicados o hay error
         public bool ExisteDuplicado(string nombreArchivo, string nombre, string marca, string tipo)
         {
             try

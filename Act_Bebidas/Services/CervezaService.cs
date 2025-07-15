@@ -12,6 +12,9 @@ namespace Act_Bebidas.Services
 {
     public class CervezaService
     {
+        // Metodo que inserta una cerveza en la tabla Cervezas de la base de datos
+        // Requiere el ID de la bebida general (ya insertada en la tabla Bebidas)
+        // Usa una conexión activa para ejecutar la inserción
         public void AgregarCervezaASQL(Cerveza cerveza, int idBebidas, SqlConnection connection)
         {
             string query = @"INSERT INTO Cervezas (idBebida, alcohol, marca)
@@ -27,10 +30,12 @@ namespace Act_Bebidas.Services
             }
         }
 
+        // Metodo que solicita al usuario los datos especificos de una cerveza
+        // Devuelve un objeto Cerveza con la informacion ingresada por consola
         public Cerveza CargarDatosDeCerveza(int cantidad, string nombre)
         {
             Console.WriteLine("Ingresar el grado de alcohol:");
-            int alcohol = int.Parse(Console.ReadLine());
+            int alcohol = GuardClause.GuardClause.ValidarOpcion(1, 100);
 
             Console.WriteLine("Ingresar la marca:");
             string marca = Console.ReadLine();

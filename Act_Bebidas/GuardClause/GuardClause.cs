@@ -27,6 +27,9 @@ namespace Act_Bebidas.GuardClause
             return opcion;
         }
 
+        // Metodo que muestra un menu por consola para seleccionar el tipo de bebida
+        // Si el parametro incluirTodos es true, agrega una opcion adicional "Todos"
+        // Devuelve el nombre de la bebida seleccionada como string
         public static string MostrarMenuBebidas(bool incluirTodos = true)
         {
             List<string> tiposDeVehiculos = new List<string> { "Vino", "Cerveza"};
